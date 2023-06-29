@@ -1,0 +1,68 @@
+!!!!ISSUE!!!!
+We need to predict on individual games so the dataset needs to store overall data
+
+Need to go through the schedule API
+And then get the UU ID of the game and then calculate the individual stats based on each
+
+structure of game stats should go like:
+json_data
+    years
+        2021
+        2022
+            Marlins:
+                id 1 Home/Away Played Timeofgame CurrentRecord performance-stats(hitting, pitching, Fielding) Win/Loss
+                    starting_pitcher_by_id
+                    possible - stadiumtype surface-type
+                    !!!Could later add who pitched who hit, etc. !!!
+                id 2
+        2023
+        ...
+
+
+
+team: The name of the team.
+team_performance_metric_1, team_performance_metric_2, team_performance_metric_3: Numeric metrics representing the team's overall performance in different aspects.
+pitching_statistic_1, pitching_statistic_2: Numeric statistics related to the pitching performance of the team.
+hitting_metric_1, hitting_metric_2: Numeric metrics related to the team's hitting or offensive capabilities.
+recent_performance: The team's recent performance, usually indicated by the outcomes of their previous few games.
+head_to_head_records: The head-to-head records between the two teams, showing the number of games won by each team in their previous matchups.
+home_field_advantage: A binary indicator (0 or 1) representing whether the game is played at the team's home field.
+injury_status: The injury status of the team, indicating whether they are injury-free or if there are any key players unavailable.
+temperature, wind_speed, humidity: Environmental factors such as temperature, wind speed, and humidity at the game location.
+betting_market_data: Information related to the betting market, such as opening and closing lines, betting percentages, or line movements.
+game_outcome: The actual outcome of the game, which could be represented as a categorical variable (e.g., "W" for win, "L" for loss).
+
+
+
+Team Performance Metrics:
+
+Winning Percentage: The ratio of games won to total games played by the team.
+Run Differential: The difference between the total runs scored and total runs allowed by the team throughout the season.
+Pythagorean Win-Loss Percentage: A metric that estimates a team's expected winning percentage based on their runs scored and runs allowed.
+Pitching Statistics:
+
+Earned Run Average (ERA): The average number of earned runs allowed by the team's pitchers per nine innings.
+Fielding Independent Pitching (FIP): A metric that measures a pitcher's performance by focusing on outcomes they can control, such as strikeouts, walks, and home runs allowed.
+Strikeout-to-Walk Ratio (K/BB): The ratio of strikeouts to walks issued by the team's pitchers.
+Hitting Metrics:
+
+On-Base Percentage (OBP): The proportion of plate appearances where the batter reaches base (hits, walks, hit by pitch).
+Slugging Percentage (SLG): A measure of the batter's power, calculated as total bases divided by at-bats.
+Weighted Runs Created Plus (wRC+): A statistic that combines various offensive metrics to measure a batter's total offensive contribution relative to league average.
+
+total_runs
+
+Away Wins and Home Wins, league_rank losing streak winning streak
+
+All under:
+"league":
+    for s in "season":
+        away_loss,
+        away_win,
+        rank: {"league"}, win_p,
+        w_l_streak = "w" in s["streak"][0].lower()
+        win_streak = s["streak"][1] if win_streak else 0
+        losing_streak = s["streak"][1] if not win_streak else 0
+
+Basic train
+Team_ID,#Bat,BatAge,R/G,G,PA,AB,R,H,2B,3B,HR,RBI,SB,CS,BB,SO,BA,OBP,SLG,OPS,OPS+,TB,GDP,HBP,SH,SF,IBB,LOB
