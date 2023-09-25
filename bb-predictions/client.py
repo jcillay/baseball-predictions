@@ -19,7 +19,7 @@ SEASONAL_STATS_URL = "league/seasons/{season_id}/teams/statistics.json?api_key="
 SEASONS_URL = "seasons.json?api_key="
 
 
-API_KEY = "5pnyxrn5ezxedwetq659sadx"
+API_KEY = ""
 
 
 class SportRadarClient:
