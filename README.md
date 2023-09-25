@@ -1,4 +1,4 @@
-#Baseball Predictions
+# Baseball Predictions
 
 Attempts to predict the winner of two upcoming mlb games using the SportsRadar API and scikit RandomForestClassifier. 
 
