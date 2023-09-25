@@ -110,6 +110,5 @@ class PSQLClient:
         for i in range(len(columns)):
             select_stmt += columns[i]
         select_stmt += f" FROM {table_name};"
-        print("select_stmt", select_stmt)
         cursor.execute(select_stmt)
         return cursor.fetchall()
